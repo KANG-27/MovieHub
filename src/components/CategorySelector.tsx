@@ -4,9 +4,10 @@ import React from "react";
 // Definimos una interfaz para las props del componente
 interface CategorySelectorProps {
   setUrl: React.Dispatch<React.SetStateAction<string>>; // Tipado de setUrl como función que toma un string
+  setPage: React.Dispatch<React.SetStateAction<number>>; // Tipado de setUrl como función que toma un string
 }
 
-function CategorySelector({ setUrl }: CategorySelectorProps) {
+function CategorySelector({ setUrl, setPage }: CategorySelectorProps) {
   const listCategorys = [
     {
       name: "Disney",
@@ -63,16 +64,16 @@ function CategorySelector({ setUrl }: CategorySelectorProps) {
       {listCategorys.map((category, index) => (
         <div
           key={category.name}
-          className="bg-[#0F014B] w-[250px] h-[141px] rounded-lg relative cursor-pointer justify-center items-center"
+          className="bg-[#0F014B] w-[300px] h-[169px] rounded-lg relative cursor-pointer justify-center items-center"
           onMouseEnter={() => handleonMouseEnter(index)}
           onMouseLeave={() => handleonMouseLeave(index)}
-          onClick={() => setUrl(category.url)}
+          onClick={() => {setUrl(category.url);setPage(1)}}
         >
           <video
             ref={(el) => (videoRefs.current[index] = el)} // Asignamos la referencia para cada video
             src={category.video}
             muted
-            className="absolute rounded-lg opacity-0 transition-opacity duration-500 ease-in-out"
+            className="absolute rounded-lg opacity-0 transition-opacity duration-200 ease-in-out"
           ></video>
           <div className="absolute h-full w-full flex justify-center text-center items-center">
             <img
