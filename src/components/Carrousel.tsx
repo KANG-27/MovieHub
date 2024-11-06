@@ -1,4 +1,4 @@
 function Carrousel() {
-  return <div></div>;
+  return <div>Carrousel</div>;
 }
 export default Carrousel;
